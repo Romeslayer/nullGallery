@@ -29,18 +29,32 @@ class App extends React.Component {
  }
 
  saveArtwork = (id) => {
-   console.log(this.state)
-   let currentArtwork = this.state.artworks.find(art => art.id === id);
-   this.setState({gallery: [...this.state.gallery, currentArtwork]});
+
+   let copyArtworks = [...this.state.artworks];
+   let currentArtwork = copyArtworks.find(art => art.id === id);
+   this.toggleHeart(currentArtwork);
+   this.setState(
+     {
+       gallery: [...this.state.gallery, currentArtwork],
+       artworks: [...copyArtworks]
+     }
+   )
+ }
+
+ toggleHeart = (artwork) => {
+   artwork.heart = !artwork.heart;
  }
 
  removeArtwork = (id) => {
-   let newGallery = this.state.gallery.filter(art => art.id !== id);
-   this.setState({gallery: newGallery});
+   let copyArtworks = [...this.state.artworks];
+   let copyGallery = [...this.state.gallery].filter(art => art.id !== id);
+   let currentArtwork = copyArtworks.find(art => art.id === id);
+   this.toggleHeart(currentArtwork);
+   this.setState({artworks: copyArtworks, gallery: copyGallery});
  }
 
 componentDidMount() {
-  this.createArtworks()
+  this.createArtworks();
 }
 
   render() {
