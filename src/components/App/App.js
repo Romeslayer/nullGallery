@@ -1,5 +1,6 @@
 import React from 'react';
 import { Header } from '../Header/Header.js';
+import { Redirect, Switch, Route } from 'react-router-dom';
 import { cleanArtResponse } from '../../utilities.js';
 import './App.css';
 
@@ -32,9 +33,18 @@ componentDidMount() {
 
   render() {
     return (
-      <div className="App">
-        <Header />
-      </div>
+      <main className="App">
+      <Redirect exact from='/' to='/home' />
+      <Switch>
+        <Route
+          exact path='/home'
+          render={()=> {
+            return (
+              <Header />
+            )
+          }} />
+      </Switch>
+      </main>
     );
   }
 
