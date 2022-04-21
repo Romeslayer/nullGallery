@@ -14,7 +14,19 @@ class App extends React.Component {
     }
   }
 
+ createArtworks() {
+   fetchArtworks()
+    .then(data => {
+      console.log(data)
+    })
+    .catch( err => {
+      console.log(err)
+    })
+ }
 
+componentDidMount() {
+  this.createArtworks()
+}
 
   render() {
     return (
