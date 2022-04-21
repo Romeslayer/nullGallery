@@ -1,6 +1,7 @@
 
-const cleanArtResponse = ({pagination, data}) => {
+const cleanArtResponse = ({pagination, data, config}) => {
   const result = {};
+  console.log(config)
    result.artworks = data.map(art => {
     return {
       id: art.id,
@@ -8,7 +9,7 @@ const cleanArtResponse = ({pagination, data}) => {
       artist: art.artist_title,
       type: art.artwork_type_title,
       copyright: art.copyright_notice,
-      image: art.thumbnail,
+      image: `${config.iiif_url}/${art.image_id}/full/843,/0/default.jpg`,
       heart: false
     }
   })
