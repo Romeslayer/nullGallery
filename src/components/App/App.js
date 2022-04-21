@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Header } from '../Header/Header.js';
 import { Redirect, Switch, Route } from 'react-router-dom';
 import { cleanArtResponse } from '../../utilities.js';
+import { MainDisplay } from '../MainDisplay/MainDisplay.js'
 import './App.css';
 
 import { fetchArtworks } from '../../apiCalls.js';
@@ -20,11 +21,22 @@ class App extends React.Component {
    fetchArtworks()
     .then(data => {
       let cleanedResponse = cleanArtResponse(data);
-      this.setState({artworks: cleanedResponse.artworks})
+      this.setState({artworks: cleanedResponse.artworks});
     })
     .catch( err => {
       console.log(err)
     })
+ }
+
+ saveArtwork = (id) => {
+   console.log(this.state)
+   let currentArtwork = this.state.artworks.find(art => art.id === id);
+   this.setState({gallery: [...this.state.gallery, currentArtwork]});
+ }
+
+ removeArtwork = (id) => {
+   let newGallery = this.state.gallery.filter(art => art.id !== id);
+   this.setState({gallery: newGallery});
  }
 
 componentDidMount() {
@@ -40,7 +52,10 @@ componentDidMount() {
           exact path='/home'
           render={()=> {
             return (
+              <>
               <Header />
+              {this.state.artworks.length ? <MainDisplay artworks={this.state.artworks} saveArtwork={this.saveArtwork} removeArtwork={this.removeArtwork} /> : '' }
+              </>
             )
           }} />
       </Switch>
