@@ -1,15 +1,20 @@
-** What code did you implement/add?
+## What code did you implement/add?
 
 -
 
-** Did you refactor anything?
+
+## Did you refactor anything?
 
 -
 
-** What resources did you use?
+
+## What resources did you use?
 
 -
 
-** Are there any issues that came up?
+
+## Are there any issues that came up?
 
 - 
+
+
