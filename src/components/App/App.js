@@ -9,7 +9,8 @@ class App extends React.Component {
     super();
 
     this.state = {
-      
+      gallery: [],
+      artworks: []
     }
   }
 
