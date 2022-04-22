@@ -1,19 +1,28 @@
 
-const cleanArtResponse = ({pagination, data, config}) => {
+const cleanResponse = ({pagination, data, config}) => {
   const result = {};
-  console.log(config)
    result.artworks = data.map(art => {
     return {
       id: art.id,
       title: art.title,
+    }
+  })
+  return result;
+}
+
+
+const cleanArtworks = ({ data, config}) => {
+  const result = {};
+  result.artworks = data.map(art => {
+    return {
+      id: art.id,
+      title: art.title,
       artist: art.artist_title,
-      type: art.artwork_type_title,
-      copyright: art.copyright_notice,
+      type: art.artork_type_title,
       image: `${config.iiif_url}/${art.image_id}/full/843,/0/default.jpg`,
       heart: false
     }
   })
   return result;
 }
-
-export { cleanArtResponse };
+export { cleanResponse, cleanArtworks };

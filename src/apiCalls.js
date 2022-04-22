@@ -1,14 +1,24 @@
 const fetchArtworks = () => {
-   let fetchCall = fetch(`https://api.artic.edu/api/v1/artworks?limit=12`)
+   let fetchCall = fetch(`https://api.artic.edu/api/v1/artworks/search?q=contemporary?query[term][image_id][must_not]=null`)
     .then(response => {
-        if (response.status === 404) {
+        if (!response.ok) {
             throw new Error("404: Not Found")
-        } else if (response.status === 500) {
-            throw new Error("500: Server is having issues")
         }
         return response.json()
     })
     return fetchCall
 }
 
-export { fetchArtworks }
+
+const fetchArtDetails = (ids) => {
+  let idQuery = ids.join(',');
+  let fetchCall = fetch(`https://api.artic.edu/api/v1/artworks?ids=${idQuery}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("404: Not Found")
+      }
+      return response.json()
+    })
+    return fetchCall
+}
+export { fetchArtworks, fetchArtDetails }
