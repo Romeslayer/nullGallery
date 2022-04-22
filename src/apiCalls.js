@@ -12,8 +12,6 @@ const fetchArtworks = () => {
 
 const fetchArtDetails = (ids) => {
   let idQuery = ids.join(',');
-  console.log(idQuery);
-
   let fetchCall = fetch(`https://api.artic.edu/api/v1/artworks?ids=${idQuery}`)
     .then(response => {
       if (!response.ok) {
