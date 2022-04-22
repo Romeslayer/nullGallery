@@ -4,6 +4,7 @@ import { Redirect, Switch, Route } from 'react-router-dom';
 import { cleanResponse, cleanArtworks } from '../../utilities.js';
 import { MainDisplay } from '../MainDisplay/MainDisplay.js';
 import { Footer } from '../Footer/Footer.js';
+import { Gallery } from '../Gallery/Gallery.js';
 import './App.css';
 
 import { fetchArtworks, fetchArtDetails } from '../../apiCalls.js';
@@ -72,12 +73,24 @@ componentDidMount() {
           render={()=> {
             return (
               <>
-              <Header />
-              {this.state.artworks.length ? <MainDisplay artworks={this.state.artworks} saveArtwork={this.saveArtwork} removeArtwork={this.removeArtwork} /> : '' }
-              {this.state.gallery.length ? <Footer gallery={this.state.gallery} /> : ''}
+                <Header />
+                {this.state.artworks.length ? <MainDisplay artworks={this.state.artworks} saveArtwork={this.saveArtwork} removeArtwork={this.removeArtwork} /> : '' }
+                {this.state.gallery.length ? <Footer gallery={this.state.gallery} /> : ''}
               </>
             )
           }} />
+
+        <Route
+          exact path='/gallery'
+          render={ ()=> {
+            return (
+              <>
+                <Header />
+                {this.state.gallery.length ? <Gallery gallery={this.state.gallery} /> : '' }
+              </>
+            )
+          }}
+          />
       </Switch>
       </main>
     );
