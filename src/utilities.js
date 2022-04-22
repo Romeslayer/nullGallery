@@ -23,7 +23,6 @@ const cleanArtworks = ({ data, config}) => {
       heart: false
     }
   })
-  console.log(result)
   return result;
 }
 export { cleanResponse, cleanArtworks };
