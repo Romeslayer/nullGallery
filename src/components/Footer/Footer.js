@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './Footer.css';
 
@@ -10,7 +11,7 @@ export const Footer = ({gallery}) => {
   })
     return (
         <footer>
-        <h2>Footer</h2>
+        <Link to='/gallery'><button>Gallery</button></Link>
         {miniCards}
         </footer>
     )
