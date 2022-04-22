@@ -24,9 +24,7 @@ class App extends React.Component {
       let cleanedResponse = cleanResponse(data);
       let ids = cleanedResponse.artworks.map(art => art.id)
       fetchArtDetails(ids).then(data => {
-        console.log(data);
         let cleanedArt = cleanArtworks(data);
-        console.log(cleanedArt)
         this.setState({artworks: cleanedArt.artworks});
       })
     })
