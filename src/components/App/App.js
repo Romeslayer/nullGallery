@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react';
 import { Header } from '../Header/Header.js';
 import { Redirect, Switch, Route } from 'react-router-dom';
-import { cleanArtResponse } from '../../utilities.js';
-import { MainDisplay } from '../MainDisplay/MainDisplay.js'
+import { cleanResponse, cleanArtworks } from '../../utilities.js';
+import { MainDisplay } from '../MainDisplay/MainDisplay.js';
+import { Footer } from '../Footer/Footer.js';
 import './App.css';
 
-import { fetchArtworks } from '../../apiCalls.js';
+import { fetchArtworks, fetchArtDetails } from '../../apiCalls.js';
 
 class App extends React.Component {
   constructor() {
@@ -20,8 +21,14 @@ class App extends React.Component {
  createArtworks() {
    fetchArtworks()
     .then(data => {
-      let cleanedResponse = cleanArtResponse(data);
-      this.setState({artworks: cleanedResponse.artworks});
+      let cleanedResponse = cleanResponse(data);
+      let ids = cleanedResponse.artworks.map(art => art.id)
+      fetchArtDetails(ids).then(data => {
+        console.log(data);
+        let cleanedArt = cleanArtworks(data);
+        console.log(cleanedArt)
+        this.setState({artworks: cleanedArt.artworks});
+      })
     })
     .catch( err => {
       console.log(err)
@@ -69,6 +76,7 @@ componentDidMount() {
               <>
               <Header />
               {this.state.artworks.length ? <MainDisplay artworks={this.state.artworks} saveArtwork={this.saveArtwork} removeArtwork={this.removeArtwork} /> : '' }
+              {this.state.gallery.length ? <Footer gallery={this.state.gallery} /> : ''}
               </>
             )
           }} />
