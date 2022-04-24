@@ -8,8 +8,8 @@ export function MainDisplay({artworks, removeArtwork, saveArtwork}){
   })
 
     return (
-        <div>
+        <section className='card-display'>
           {cards}
-        </div>
+        </section>
     )
 }
