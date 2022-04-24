@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Card.css';
 
 export function Card({ art, toggle }) {
@@ -10,4 +11,9 @@ export function Card({ art, toggle }) {
           {button}
         </div>
     )
+}
+
+Card.propType = {
+  art: PropTypes.object.isRequired,
+  toogle: PropTypes.func.isRequired
 }

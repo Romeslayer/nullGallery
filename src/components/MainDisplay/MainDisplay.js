@@ -14,6 +14,7 @@ export function MainDisplay({artworks, removeArtwork, saveArtwork}){
         </section>
     )
 }
+
 MainDisplay.propTypes = {
   artworks: PropTypes.array.isRequired,
   removeArtwork: PropTypes.func,
