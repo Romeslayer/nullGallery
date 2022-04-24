@@ -19,5 +19,22 @@ describe('Gallery page', () => {
             .click();
   })
 
-  it('should have two arrows to that can be clicked')
+  it('should display null Gallery in the header with a button to go home', () => {
+    cy.get('header')
+      .contains('null Gallery')
+      .get('.home-button')
+  })
+
+  it('home button should change url back to home', () => {
+    cy.get('.home-button')
+      .click()
+      cy.url().should('eq', 'http://localhost:3000/home')
+  })
+
+  it('should have two arrows to that can be clicked', () => {
+    cy.get('.left-arrow')
+      .click()
+    cy.get('.right-arrow')
+      .click()
+  })
 })
