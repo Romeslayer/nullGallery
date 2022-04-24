@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import footerImage from '../../assets/sec4_bg.png'
 
 import './Footer.css';
 

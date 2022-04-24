@@ -6,7 +6,7 @@ export function Card({ art, toggle }) {
 
     return (
         <div className="card">
-          <img className='card-image' src={art.image} />
+          <img className='card-image' src={art.image} alt={art.title} />
           {button}
         </div>
     )

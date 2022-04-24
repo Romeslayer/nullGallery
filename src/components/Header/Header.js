@@ -9,7 +9,7 @@ export const Header = (props) => {
     return (
         <header>
         <div className="header-background">
-          <img src={headerBackground} />
+          <img src={headerBackground} alt='' />
         </div>
         <h1 className="title">null Gallery</h1>
         {homeButton}
