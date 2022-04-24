@@ -47,6 +47,7 @@ describe('null Gallery home page', () => {
         .click();
   })
 
+
   it('after adding images to the gallery the footer should appear with the saved images and button to the gallery', () => {
     cy.get('.card-button')
       .first()
@@ -58,6 +59,25 @@ describe('null Gallery home page', () => {
           .should('have.length', 2);
       cy.get('.mini-img[alt="Painting (Figures with Stars)"]')
       cy.get('.mini-img[alt="Visions of Eternity"]')
+  })
+
+  it('should be able to remove an image by clicking the heart again', () => {
+    cy.get('.card-button')
+      .first()
+        .click()
+      cy.get('.card-button').last()
+        .click();
+      cy.get('.mini-img-display')
+        .children()
+          .should('have.length', 2);
+      cy.get('.mini-img[alt="Painting (Figures with Stars)"]')
+      cy.get('.mini-img[alt="Visions of Eternity"]')
+      cy.get('.card-button').last()
+        .click()
+      cy.get('.mini-img-display')
+        .children()
+          .should('have.length', 1);
+
   })
 
   it('should be taken to gallery page when clicking the gallery button' , () => {
