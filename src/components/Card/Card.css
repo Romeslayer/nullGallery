@@ -1,0 +1,17 @@
+.card {
+  width: 30%;
+}
+
+.card-image {
+ max-width: 75%;
+}
+
+.card-button {
+  position: relative;
+  right: 40px;
+  bottom: 30px;
+  background-color: rgba(255, 0, 0, 0.5);
+  border-style: none;
+  padding: .25rem .5rem;
+  cursor: pointer;
+}
