@@ -37,4 +37,15 @@ describe('Gallery page', () => {
     cy.get('.right-arrow')
       .click()
   })
+  it('image that is displayed should change with each arrow click', () => {
+    cy.get('[alt="Painting (Figures with Stars)"]')
+    cy.get('.left-arrow')
+      .click()
+    cy.get('[alt="Visions of Eternity"]')
+    cy.get('.right-arrow')
+      .click()
+    cy.get('[alt="Painting (Figures with Stars)"]')
+  })
+
+
 })
