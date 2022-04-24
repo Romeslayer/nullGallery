@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import './Header.css'
-import headerBackground from "../../assets/header-bg.png"
+import './Header.css';
+import headerBackground from "../../assets/header-bg.png";
 export const Header = (props) => {
 
   let homeButton = (props.home ? '' : <Link to="/home"><button className="home-button">home</button></Link>)
@@ -15,4 +16,8 @@ export const Header = (props) => {
         {homeButton}
         </header>
     )
+}
+
+Header.propTypes = {
+  home: PropTypes.bool
 }
