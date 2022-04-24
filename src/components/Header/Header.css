@@ -1,0 +1,13 @@
+header {
+  color: white;
+  text-align: left;
+}
+
+.header-background {
+  position: absolute;
+  z-index: -1;
+}
+
+.title {
+  padding: 1rem;
+}
