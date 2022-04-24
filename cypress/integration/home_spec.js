@@ -59,4 +59,16 @@ describe('null Gallery home page', () => {
       cy.get('.mini-img[alt="Painting (Figures with Stars)"]')
       cy.get('.mini-img[alt="Visions of Eternity"]')
   })
+
+  it('should be taken to gallery page when clicking the gallery button' , () => {
+    cy.get('.card-button')
+      .first()
+        .click()
+      cy.get('.card-button').last()
+        .click();
+    cy.get('.gallery-button')
+      .click();
+
+      cy.url().should('eq', 'http://localhost:3000/gallery')
+  })
 })
