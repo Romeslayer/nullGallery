@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import './Card.css';
 
 export function Card({ art, toggle }) {
-  const button = <button onClick={() => toggle(art.id)}>{art.heart ? '❤️' : '🤍' }</button>
+  const button = <button className="card-button" onClick={() => toggle(art.id)}>{art.heart ? '❤️' : '🤍' }</button>
 
     return (
         <div className="card">
-          <img src={art.image} />
+          <img className='card-image' src={art.image} />
           {button}
         </div>
     )

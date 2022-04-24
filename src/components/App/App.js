@@ -73,7 +73,7 @@ componentDidMount() {
           render={()=> {
             return (
               <>
-                <Header />
+                <Header home={true} />
                 {this.state.artworks.length ? <MainDisplay artworks={this.state.artworks} saveArtwork={this.saveArtwork} removeArtwork={this.removeArtwork} /> : '' }
                 {this.state.gallery.length ? <Footer gallery={this.state.gallery} /> : ''}
               </>
@@ -85,7 +85,7 @@ componentDidMount() {
           render={ ()=> {
             return (
               <>
-                <Header />
+                <Header home={false} />
                 {this.state.gallery.length ? <Gallery gallery={this.state.gallery} /> : '' }
               </>
             )
