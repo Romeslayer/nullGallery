@@ -5,6 +5,7 @@ import { cleanResponse, cleanArtworks } from '../../utilities.js';
 import { MainDisplay } from '../MainDisplay/MainDisplay.js';
 import { Footer } from '../Footer/Footer.js';
 import { Gallery } from '../Gallery/Gallery.js';
+import { ErrorPage } from '../ErrorPage/ErrorPage';
 import './App.css';
 
 import { fetchArtworks, fetchArtDetails } from '../../apiCalls.js';
@@ -15,7 +16,8 @@ class App extends React.Component {
 
     this.state = {
       gallery: [],
-      artworks: []
+      artworks: [],
+      error: ''
     }
   }
 
@@ -30,7 +32,7 @@ class App extends React.Component {
       })
     })
     .catch( err => {
-      console.log(err)
+      this.setState({error: err})
     })
  }
 
@@ -66,6 +68,7 @@ componentDidMount() {
   render() {
     return (
       <main className="App">
+        {this.state.error ? <Redirect to='/error'/> : ''}
       <Switch>
         <Redirect exact from='/' to='/home' />
         <Route
@@ -87,6 +90,18 @@ componentDidMount() {
               <>
                 <Header home={false} />
                 {this.state.gallery.length ? <Gallery gallery={this.state.gallery} /> : '' }
+              </>
+            )
+          }}
+          />
+
+        <Route
+          exact path='/error'
+          render={() => {
+            return (
+              <>
+              <Header home={false} />
+              {this.state.error ? <ErrorPage error={this.state.error} /> : ''}
               </>
             )
           }}
