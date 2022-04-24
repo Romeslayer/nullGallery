@@ -27,6 +27,7 @@ footer {
   border-style: none;
   font-weight: bold;
   font-size: 1.25rem;
+  border-radius: 15px
 }
 
 .mini-img {
