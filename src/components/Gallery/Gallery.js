@@ -23,7 +23,6 @@ export class Gallery extends Component {
 
     render() {
 
-
       let displayedImage = (!Array.isArray(this.state.images) || this.state.images.length <= 0) ? null : this.state.images.map((art, index) => {
           return(
             <div className={index === this.state.current ? 'slide active' : 'slide'} key={art.id} >
