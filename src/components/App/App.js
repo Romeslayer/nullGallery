@@ -66,8 +66,8 @@ componentDidMount() {
   render() {
     return (
       <main className="App">
-      <Redirect exact from='/' to='/home' />
       <Switch>
+        <Redirect exact from='/' to='/home' />
         <Route
           exact path='/home'
           render={()=> {
@@ -91,6 +91,19 @@ componentDidMount() {
             )
           }}
           />
+
+        <Route
+          exact path='/404'
+          render={() => {
+            return(
+              <>
+                <Header home={false} />
+                <h2>404 page not found</h2>
+              </>
+            )
+          }}
+          />
+        <Redirect from='/' to='/404' />
       </Switch>
       </main>
     );
