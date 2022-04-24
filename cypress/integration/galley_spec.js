@@ -1,4 +1,7 @@
-import { fetchArtworksResponse, fetchArtDetailsResponse } from '../fixtures/responses.js';
+import {
+  fetchArtworksResponse,
+  fetchArtDetailsResponse
+} from '../fixtures/responses.js';
 
 describe('Gallery page', () => {
 
@@ -9,14 +12,14 @@ describe('Gallery page', () => {
     cy.intercept('GET', 'https://api.artic.edu/api/v1/artworks?ids=70374,70125,77615', fetchArtDetailsResponse)
       .as('fetchArtDetails');
 
-      cy.visit('localhost:3000/home');
-      cy.get('.card-button')
-        .first()
-          .click()
-        cy.get('.card-button').last()
-          .click();
-          cy.get('.gallery-button')
-            .click();
+    cy.visit('localhost:3000/home');
+    cy.get('.card-button')
+      .first()
+      .click()
+    cy.get('.card-button').last()
+      .click();
+    cy.get('.gallery-button')
+      .click();
   })
 
   it('should display null Gallery in the header with a button to go home', () => {
@@ -28,7 +31,7 @@ describe('Gallery page', () => {
   it('home button should change url back to home', () => {
     cy.get('.home-button')
       .click()
-      cy.url().should('eq', 'http://localhost:3000/home')
+    cy.url().should('eq', 'http://localhost:3000/home')
   })
 
   it('should have two arrows to that can be clicked', () => {
@@ -37,6 +40,7 @@ describe('Gallery page', () => {
     cy.get('.right-arrow')
       .click()
   })
+
   it('image that is displayed should change with each arrow click', () => {
     cy.get('[alt="Painting (Figures with Stars)"]')
     cy.get('.left-arrow')
@@ -46,6 +50,5 @@ describe('Gallery page', () => {
       .click()
     cy.get('[alt="Painting (Figures with Stars)"]')
   })
-
 
 })
