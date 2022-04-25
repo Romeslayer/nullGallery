@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React from 'react';
+import PropTypes from 'prop-types';
 export function ErrorPage({ error }) {
     return (
       <>
@@ -7,4 +7,8 @@ export function ErrorPage({ error }) {
         <p>{error.message}</p>
       </>
     )
+}
+
+ErrorPage.propTypes= {
+  error: PropTypes.object.isRequired
 }
