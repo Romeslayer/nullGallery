@@ -5,6 +5,7 @@ import { cleanResponse, cleanArtworks } from '../../utilities.js';
 import { MainDisplay } from '../MainDisplay/MainDisplay.js';
 import { Footer } from '../Footer/Footer.js';
 import { Gallery } from '../Gallery/Gallery.js';
+import { ErrorPage } from '../ErrorPage/ErrorPage';
 import './App.css';
 
 import { fetchArtworks, fetchArtDetails } from '../../apiCalls.js';
@@ -15,7 +16,8 @@ class App extends React.Component {
 
     this.state = {
       gallery: [],
-      artworks: []
+      artworks: [],
+      error: ''
     }
   }
 
@@ -30,7 +32,7 @@ class App extends React.Component {
       })
     })
     .catch( err => {
-      console.log(err)
+      this.setState({error: err})
     })
  }
 
@@ -66,8 +68,9 @@ componentDidMount() {
   render() {
     return (
       <main className="App">
-      <Redirect exact from='/' to='/home' />
+        {this.state.error ? <Redirect to='/error'/> : ''}
       <Switch>
+        <Redirect exact from='/' to='/home' />
         <Route
           exact path='/home'
           render={()=> {
@@ -91,6 +94,31 @@ componentDidMount() {
             )
           }}
           />
+
+        <Route
+          exact path='/error'
+          render={() => {
+            return (
+              <>
+              <Header home={false} />
+              {this.state.error ? <ErrorPage error={this.state.error} /> : ''}
+              </>
+            )
+          }}
+          />
+
+        <Route
+          exact path='/404'
+          render={() => {
+            return(
+              <>
+                <Header home={false} />
+                <h2>404 page not found</h2>
+              </>
+            )
+          }}
+          />
+        <Redirect from='/' to='/404' />
       </Switch>
       </main>
     );

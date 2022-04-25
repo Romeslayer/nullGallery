@@ -18,7 +18,6 @@ const cleanArtworks = ({ data, config}) => {
       id: art.id,
       title: art.title,
       artist: art.artist_title,
-      type: art.artork_type_title,
       image: `${config.iiif_url}/${art.image_id}/full/843,/0/default.jpg`,
       heart: false
     }

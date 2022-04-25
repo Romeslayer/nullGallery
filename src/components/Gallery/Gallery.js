@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Gallery.css'
 import {FaArrowAltCircleRight, FaArrowAltCircleLeft} from 'react-icons/fa'
 
@@ -45,4 +46,8 @@ export class Gallery extends Component {
     }
 }
 
-export default Gallery
+Gallery.propTypes ={
+  gallery: PropTypes.array.isRequired
+}
+
+export default Gallery;

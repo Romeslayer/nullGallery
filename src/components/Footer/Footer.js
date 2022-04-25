@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import footerImage from '../../assets/sec4_bg.png'
+import PropTypes from 'prop-types';
 
 import './Footer.css';
 
@@ -18,4 +18,8 @@ export const Footer = ({gallery}) => {
         </div>
         </footer>
     )
+}
+
+Footer.propTypes = {
+  gallery: PropTypes.array.isRequired
 }

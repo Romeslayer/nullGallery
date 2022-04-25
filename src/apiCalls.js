@@ -2,7 +2,7 @@ const fetchArtworks = () => {
    let fetchCall = fetch(`https://api.artic.edu/api/v1/artworks/search?q=abstract?query[term][image_id][must_not]=null`)
     .then(response => {
         if (!response.ok) {
-            throw new Error("404: Not Found")
+            throw new Error("Sorry server malfunction")
         }
         return response.json()
     })
@@ -15,7 +15,7 @@ const fetchArtDetails = (ids) => {
   let fetchCall = fetch(`https://api.artic.edu/api/v1/artworks?ids=${idQuery}`)
     .then(response => {
       if (!response.ok) {
-        throw new Error("404: Not Found")
+        throw new Error("Sorry server malfunction")
       }
       return response.json()
     })

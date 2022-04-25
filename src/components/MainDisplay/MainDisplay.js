@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Card } from '../Card/Card.js';
 import './MainDisplay.css';
 
@@ -12,4 +13,10 @@ export function MainDisplay({artworks, removeArtwork, saveArtwork}){
           {cards}
         </section>
     )
+}
+
+MainDisplay.propTypes = {
+  artworks: PropTypes.array.isRequired,
+  removeArtwork: PropTypes.func,
+  saveArtwork: PropTypes.func,
 }
